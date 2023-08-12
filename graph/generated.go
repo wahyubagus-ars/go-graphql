@@ -291,10 +291,8 @@ var sources = []*ast.Source{
 
 
 input NewPost {
-    id: String!
     title: String!
     description: String!
-    userId: String!
 }`, BuiltIn: false},
 	{Name: "../schema/query.graphqls", Input: `type Query {
     posts: [Post!]!
@@ -307,7 +305,6 @@ input NewPost {
 }
 
 input NewUser {
-    id: String!
     name: String!
     email: String!
 }`, BuiltIn: false},
@@ -2804,22 +2801,13 @@ func (ec *executionContext) unmarshalInputNewPost(ctx context.Context, obj inter
 		asMap[k] = v
 	}
 
-	fieldsInOrder := [...]string{"id", "title", "description", "userId"}
+	fieldsInOrder := [...]string{"title", "description"}
 	for _, k := range fieldsInOrder {
 		v, ok := asMap[k]
 		if !ok {
 			continue
 		}
 		switch k {
-		case "id":
-			var err error
-
-			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("id"))
-			data, err := ec.unmarshalNString2string(ctx, v)
-			if err != nil {
-				return it, err
-			}
-			it.ID = data
 		case "title":
 			var err error
 
@@ -2838,15 +2826,6 @@ func (ec *executionContext) unmarshalInputNewPost(ctx context.Context, obj inter
 				return it, err
 			}
 			it.Description = data
-		case "userId":
-			var err error
-
-			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("userId"))
-			data, err := ec.unmarshalNString2string(ctx, v)
-			if err != nil {
-				return it, err
-			}
-			it.UserID = data
 		}
 	}
 
@@ -2860,22 +2839,13 @@ func (ec *executionContext) unmarshalInputNewUser(ctx context.Context, obj inter
 		asMap[k] = v
 	}
 
-	fieldsInOrder := [...]string{"id", "name", "email"}
+	fieldsInOrder := [...]string{"name", "email"}
 	for _, k := range fieldsInOrder {
 		v, ok := asMap[k]
 		if !ok {
 			continue
 		}
 		switch k {
-		case "id":
-			var err error
-
-			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("id"))
-			data, err := ec.unmarshalNString2string(ctx, v)
-			if err != nil {
-				return it, err
-			}
-			it.ID = data
 		case "name":
 			var err error
 

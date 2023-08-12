@@ -3,14 +3,11 @@
 package model
 
 type NewPost struct {
-	ID          string `json:"id"`
 	Title       string `json:"title"`
 	Description string `json:"description"`
-	UserID      string `json:"userId"`
 }
 
 type NewUser struct {
-	ID    string `json:"id"`
 	Name  string `json:"name"`
 	Email string `json:"email"`
 }

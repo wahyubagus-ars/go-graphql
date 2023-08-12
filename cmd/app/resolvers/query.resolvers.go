@@ -6,28 +6,18 @@ package resolvers
 
 import (
 	"context"
-	"fmt"
 	model "golang-graphql-medium/cmd/app/domain/dao"
 	"golang-graphql-medium/graph"
 )
 
 // Posts is the resolver for the posts field.
 func (r *queryResolver) Posts(ctx context.Context) ([]*model.Post, error) {
-	var result []*model.Post
-
-	post := &model.Post{
-		ID:          "1",
-		Title:       "Interstellar",
-		Description: "A space movie",
-	}
-
-	result = append(result, post)
-	return result, nil
+	return r.Resolver.Posts, nil
 }
 
 // Users is the resolver for the users field.
 func (r *queryResolver) Users(ctx context.Context) ([]*model.User, error) {
-	panic(fmt.Errorf("not implemented: Users - users"))
+	return r.Resolver.Users, nil
 }
 
 // Query returns graph.QueryResolver implementation.

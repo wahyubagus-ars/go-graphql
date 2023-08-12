@@ -6,8 +6,6 @@ type Post {
 
 
 input NewPost {
-    id: String!
     title: String!
     description: String!
-    userId: String!
 }

@@ -4,7 +4,6 @@ import (
 	"github.com/99designs/gqlgen/graphql/handler"
 	"github.com/99designs/gqlgen/graphql/playground"
 	"golang-graphql-medium/cmd/app/resolvers"
-	"golang-graphql-medium/config"
 	"golang-graphql-medium/graph"
 	"log"
 	"net/http"
@@ -19,10 +18,10 @@ func main() {
 		port = defaultPort
 	}
 
-	_, err := config.InitDb()
-	if err != nil {
-		log.Fatal(err)
-	}
+	//_, err := config.InitDb()
+	//if err != nil {
+	//	log.Fatal(err)
+	//}
 
 	srv := handler.NewDefaultServer(graph.NewExecutableSchema(graph.Config{Resolvers: &resolvers.Resolver{}}))
 

@@ -5,7 +5,6 @@ type User {
 }
 
 input NewUser {
-    id: String!
     name: String!
     email: String!
 }
