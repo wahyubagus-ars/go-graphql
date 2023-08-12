@@ -1,0 +1,4 @@
+type Mutation {
+    createPost(input: NewPost!): Post!
+    createUser(input: NewUser!): User!
+}
